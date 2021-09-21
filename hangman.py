@@ -9,14 +9,17 @@ while True:
     if x == ("1"):
         levels = 1
         lives = 6
-        print ("You choose the rookie level.")
+        print ("You choose the rookie level!")
         break
     
     if x == ("2"):
         levels = 2
         lives = 3
-        print ("You choose the expert level.")
+        print ("You choose the expert level!")
         break
+    else:
+        print("Pls choose a valid operator!")
 
-words = open("countries-and-capitals.txt")
-hangman_list = []
+with open("countries-and-capitals.txt") as f:
+    word_list = f.read().splitlines()
+
