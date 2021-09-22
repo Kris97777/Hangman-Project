@@ -1,13 +1,17 @@
 import random
+import time
+time.sleep(2)
 print("")
-print("  _   _                                         ")
-print(" | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __  ")
-print(" | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ ")
-print(" |  _  | (_| | | | | (_| | | | | | | (_| | | | |")
-print(" |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|")
+print("  _   _                                                     ")
+print(" | | | | __ _ _ __   __ _  ____ ____  _ __ ___   __ _ _ __  ")
+print(" | |_| |/ _` | '_ \ / _` ||____|____|| '_ ` _ \ / _` | '_ \ ")
+print(" |  _  | (_| | | | | (_| | ____ ____ | | | | | | (_| | | | |")
+print(" |_| |_|\__,_|_| |_|\__, ||____|____||_| |_| |_|\__,_|_| |_|")
 print("                    |___/                       ")
 print("")
+time.sleep(1)
 print("Welcome to HANG == MAN")
+time.sleep(2)
 
 level = 0
 lives = 0
@@ -31,13 +35,17 @@ while True:
     else:
         print("Please choose an existing difficulty! (1 for rookie or 2)")
 
-#def pick_a_random():
- #   with open("countries.txt") as f:
-#	print(random.choice(open('countries.txt').read().split()).strip()) #by anandskumar, thx :)
+
+def pick_country():
+	with open("countries.txt") as chosen_country:
+		chosen_country = (random.choice(open('countries.txt').read().split()).strip()) #by anandskumar, thx :)
+		return chosen_country.replace(" ", "")
+
 
 
 
 #while True:
+time.sleep(2)
 if (level == 2) and (lives == 3) or (level == 1) and (lives == 6):
 	print("_________")
 	print("|	 |  ")
@@ -46,6 +54,7 @@ if (level == 2) and (lives == 3) or (level == 1) and (lives == 6):
 	print("|        ")
 	print("|        ")
 	print("|________")
+	time.sleep(2)
 
 
 elif (level == 1) and (lives == 5):
@@ -56,6 +65,7 @@ elif (level == 1) and (lives == 5):
 	print("|")
 	print("|")
 	print("|________")
+	time.sleep(2)
 
 
 elif (level == 2) and (lives == 2) or (level == 1) and (lives == 4):
@@ -66,6 +76,7 @@ elif (level == 2) and (lives == 2) or (level == 1) and (lives == 4):
 	print("|	 |")
 	print("|")
 	print("|________")
+	time.sleep(2)
 
 
 elif (level == 1) and (lives == 3):
@@ -76,6 +87,7 @@ elif (level == 1) and (lives == 3):
 	print("|	 |")
 	print("|        ")
 	print("|________")
+	time.sleep(2)
 
 
 elif (level == 2) and (lives == 1) or (level == 1) and (lives == 2):
@@ -86,6 +98,7 @@ elif (level == 2) and (lives == 1) or (level == 1) and (lives == 2):
 	print("|	 |")
 	print("|")
 	print("|________")
+	time.sleep(2)
 
 
 elif (level == 1) and (lives == 1):
@@ -96,6 +109,7 @@ elif (level == 1) and (lives == 1):
 	print("|	 |")
 	print("|	/ ")
 	print("|________")
+	time.sleep(2)
 
 
 elif (level == 1 or 2) and (lives == 0):
@@ -106,4 +120,7 @@ elif (level == 1 or 2) and (lives == 0):
 	print("|	 |")
 	print("|	/ \ ")
 	print("|________")
+	time.sleep(2)
 
+country = pick_country()
+print(country)
