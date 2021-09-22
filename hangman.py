@@ -31,66 +31,79 @@ while True:
     else:
         print("Please choose an existing difficulty! (1 for rookie or 2)")
 
-def pick_a_random():
-    with open("countries.txt") as f:
-		print(random.choice(open('countries.txt').read().split()).strip()) #by anandskumar, thx :)
+#def pick_a_random():
+ #   with open("countries.txt") as f:
+#	print(random.choice(open('countries.txt').read().split()).strip()) #by anandskumar, thx :)
 
 
 
-while True:
-    if (level == 2) and (lives == 3) or (level == 1) and (lives == 6):
-	    print("_________")
-	    print("|	 |  ")
-	    print("|        ")
-	    print("|        ")
-	    print("|        ")
-	    print("|        ")
-	    print("|________")
-    elif (level == 1) and (lives == 5):
-	    print ("_________")
-	    print ("|	 |")
-	    print ("|	 O")
-	    print ("|")
-	    print ("|")
-	    print ("|")
-	    print ("|________")
-    elif (level == 2) and (lives == 2) or (level == 1) and (lives == 4):
-	    print ("_________")
-	    print ("|	 |")
-	    print ("|	 O")
-	    print ("|	 |")
-	    print ("|	 |")
-	    print ("|")
-	    print ("|________")
-    elif (level == 1) and (lives == 3):
-	    print ("_________")
-	    print ("|	 |")
-	    print ("|	 O")
-	    print ("|	\|")
-	    print ("|	 |")
-	    print ("|        ")
-	    print ("|________")
-    elif (level == 2) and (lives == 1) or (level == 1) and (lives == 2):
-	    print ("_________")
-	    print ("|	 |")
-	    print ("|	 O")
-	    print ("|	\|/")
-	    print ("|	 |")
-	    print ("|")
-	    print ("|________")
-    elif (level == 1) and (lives == 1):
-	    print ("_________")
-	    print ("|	 |")
-	    print ("|	 O")
-	    print ("|	\|/")
-	    print ("|	 |")
-	    print ("|	/ ")
-	    print ("|________")
-    elif (level == 1 or 2) and (lives == 0):
-	    print ("_________")
-	    print ("|	 |")
-	    print ("|	 O")
-	    print ("|	\|/")
-	    print ("|	 |")
-	    print ("|	/ \ ")
-	    print ("|________")
+#while True:
+if (level == 2) and (lives == 3) or (level == 1) and (lives == 6):
+	print("_________")
+	print("|	 |  ")
+	print("|        ")
+	print("|        ")
+	print("|        ")
+	print("|        ")
+	print("|________")
+
+
+elif (level == 1) and (lives == 5):
+	print("_________")
+	print("|	 |")
+	print("|	 O")
+	print("|")
+	print("|")
+	print("|")
+	print("|________")
+
+
+elif (level == 2) and (lives == 2) or (level == 1) and (lives == 4):
+	print("_________")
+	print("|	 |")
+	print("|	 O")
+	print("|	 |")
+	print("|	 |")
+	print("|")
+	print("|________")
+
+
+elif (level == 1) and (lives == 3):
+	print("_________")
+	print("|	 |")
+	print("|	 O")
+	print("|	\|")
+	print("|	 |")
+	print("|        ")
+	print("|________")
+
+
+elif (level == 2) and (lives == 1) or (level == 1) and (lives == 2):
+	print("_________")
+	print("|	 |")
+	print("|	 O")
+	print("|	\|/")
+	print("|	 |")
+	print("|")
+	print("|________")
+
+
+elif (level == 1) and (lives == 1):
+	print("_________")
+	print("|	 |")
+	print("|	 O")
+	print("|	\|/")
+	print("|	 |")
+	print("|	/ ")
+	print("|________")
+
+
+elif (level == 1 or 2) and (lives == 0):
+	print("_________")
+	print("|	 |")
+	print("|	 O")
+	print("|	\|/")
+	print("|	 |")
+	print("|	/ \ ")
+	print("|________")
+
