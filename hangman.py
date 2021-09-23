@@ -1,23 +1,27 @@
 import random
 import time
 
+
 level = 0
 lives = 0
+correct_letter = []
 guessed_letter = []
 
-#csináltam egy main functiont amibe majd az egészet belepakoljuk később
+
 def main_game():
 	welcome_message()
 	select_difficulty()
 	display_hangman()
 	hide_country()
+	guess_letter()
+	show_hangman_status = display_hangman()
+	letter_is_guessed = guess_letter()
+	if letter_is_guessed is True:
+		show_hangman_status
 
 
-
-
-#kiprinteli a fasza kis intro dolgokat
 def welcome_message():
-	#time.sleep(2)
+	time.sleep(2)
 	print("")
 	print("  _   _                                                     ")
 	print(" | | | | __ _ _ __   __ _  ____ ____  _ __ ___   __ _ _ __  ")
@@ -26,12 +30,11 @@ def welcome_message():
 	print(" |_| |_|\__,_|_| |_|\__, ||____|____||_| |_| |_|\__,_|_| |_|")
 	print("                    |___/                       ")
 	print("")
-	#time.sleep(1)
+	time.sleep(1)
 	print("Welcome to HANG == MAN")
-	#time.sleep(2)
+	time.sleep(2)
 
 
-#választ egy nehézséget ami megadja az életek számát,ezen belül van a a hangman ascii art is,szerintem az később kapjon saját functiont
 def select_difficulty():
 	global level
 	global lives
@@ -53,8 +56,9 @@ def select_difficulty():
 			break
 		else:
 			print("Please choose an existing difficulty! (1 for rookie or 2 for expert)")
-	# while True:
-	# time.sleep(2)
+	time.sleep(2)
+
+
 def display_hangman():
 	#while True:
 	if (level == 2) and (lives == 3) or (level == 1) and (lives == 6):
@@ -145,7 +149,6 @@ def win_or_lose():
 	pass
 
 
-# Ez valamiért nem stimmel, levágja a több szavas országok végeit, rá kéne jönni miért és javítani
 def pick_country():
 	countries = []
 	capitals = []
@@ -157,27 +160,25 @@ def pick_country():
 		chosen_country = (random.choice(countries))
 		return list(chosen_country)
 		
+		
 def hide_country():
 	country = pick_country()
-	print(country)
+	print(" __ " * len(country))
 
 
 def guess_letter():
 	guess1 = input("Guess a letter! \n")
 	if validate_input(guess1) is True:
 		guessed_letter.append(guess1)
-		print("You guessed right!")
 	else:
-		print("Sorry, wrong guess!")
-		return lives-1
+		print("Sorry, that's not a letter!")
 	while "_" in guessed_letter:
 		guess2 = input("Guess another letter! \n")
 		if validate_input(guess2) is True:
 			guessed_letter.append(guess2)
-			print("You guessed right!")
 		else:
-			print("Sorry, wrong guess!")
-			return lives-1
+			print("Sorry, that's not a letter!")
+	return True
 
 
 def validate_input(guess):
@@ -185,36 +186,20 @@ def validate_input(guess):
 		return True
     	
 	else:
-		return None
-    	
+		return False
 
 
+def incorrect_guess():
+	pass
 
-# 	username = input("Choose a username: ")
-# final_username = username.translate({ ord(c): None for c in "._!" })
-	
 
-#ez lefuttatja a main body-t
+def correct_guess():
+	pass
+
+
 main_game()
-# hide_country()
-#print(pick_country())
+#print(correct_letter)
 
-#Ez Gábor megoldása a random ország megnézésére,csak ki kell venni kommentből hogy teszteljünk
-#for x in range(20):
-	#country = pick_country()
-	#print(country)
 
-#ami még kell:
-#-implementálni a list funckiót a random város nevére
-#	>>> x = 'abc'
-#	>>> list(x)
-#	['a', 'b', 'c']
-#-egy loop megcsinálása hogy találgathasson a user, több eset:
-#	nem betű(ascii validator implementálás)
-#	eltalálja(_ átváltozik helyes betűvé,betű a guessed_letters halmazba kerül)
-#	nem találja el(-1 élet,betű a guessed_letters halmazba kerül)
-#-victory és defeat üzenetek 
-#	ha lives <= 0 akkor defeat
-#	ha guessed letters = random ország betűivel akkor victory
 #ctlr k u kiszedni kommentet
 #ctlr k c komment
