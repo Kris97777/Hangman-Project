@@ -1,14 +1,17 @@
-from os import linesep
 import random
 import time
 
 level = 0
 lives = 0
+guessed_letter = []
 
 #csináltam egy main functiont amibe majd az egészet belepakoljuk később
 def main_game():
 	welcome_message()
 	select_difficulty()
+	display_hangman()
+	hide_country()
+
 
 
 
@@ -30,6 +33,8 @@ def welcome_message():
 
 #választ egy nehézséget ami megadja az életek számát,ezen belül van a a hangman ascii art is,szerintem az később kapjon saját functiont
 def select_difficulty():
+	global level
+	global lives
 	while True:
 		x = input("Choose your difficulty: 1 for rookie(6 lives) or 2 for expert(3 lives). \n")
 		if x == ("1"):
@@ -47,11 +52,11 @@ def select_difficulty():
 			print("Good Bye!")
 			break
 		else:
-			print("Please choose an existing difficulty! (1 for rookie or 2)")
+			print("Please choose an existing difficulty! (1 for rookie or 2 for expert)")
+	# while True:
+	# time.sleep(2)
+def display_hangman():
 	#while True:
-	#time.sleep(2)
-#def display_hangman():
-#	while True:
 	if (level == 2) and (lives == 3) or (level == 1) and (lives == 6):
 		print("_________")
 		print("|	 |  ")
@@ -62,8 +67,7 @@ def select_difficulty():
 		print("|________")
 		print(" ")
 		time.sleep(2)
-		# break
-
+		
 
 	elif (level == 1) and (lives == 5):
 		print("_________")
@@ -75,7 +79,7 @@ def select_difficulty():
 		print("|________")
 		print(" ")
 		time.sleep(2)
-
+	
 
 	elif (level == 2) and (lives == 2) or (level == 1) and (lives == 4):
 		print("_________")
@@ -87,7 +91,7 @@ def select_difficulty():
 		print("|________")
 		print(" ")
 		time.sleep(2)
-
+	
 
 	elif (level == 1) and (lives == 3):
 		print("_________")
@@ -137,6 +141,10 @@ def select_difficulty():
 		time.sleep(2)
 
 
+def win_or_lose():
+	pass
+
+
 # Ez valamiért nem stimmel, levágja a több szavas országok végeit, rá kéne jönni miért és javítani
 def pick_country():
 	countries = []
@@ -144,7 +152,7 @@ def pick_country():
 	with open("countries-and-capitals.txt") as countries_txt:
 		for line in countries_txt:
 			splitted_line=(line.split("|"))
-			countries.append(splitted_line[0].strip())
+			countries.append(splitted_line[0].replace(" ", ""))
 			capitals.append(splitted_line[1])
 		chosen_country = (random.choice(countries))
 		return list(chosen_country)
@@ -154,6 +162,33 @@ def hide_country():
 	print(country)
 
 
+def guess_letter():
+	guess1 = input("Guess a letter! \n")
+	if validate_input(guess1) is True:
+		guessed_letter.append(guess1)
+		print("You guessed right!")
+	else:
+		print("Sorry, wrong guess!")
+		return lives-1
+	while "_" in guessed_letter:
+		guess2 = input("Guess another letter! \n")
+		if validate_input(guess2) is True:
+			guessed_letter.append(guess2)
+			print("You guessed right!")
+		else:
+			print("Sorry, wrong guess!")
+			return lives-1
+
+
+def validate_input(guess):
+	if ord(guess) >= 65 and ord(guess) <= 90 or ord(guess) >= 97 and ord(guess) <= 122 :
+		return True
+    	
+	else:
+		return None
+    	
+
+
 
 # 	username = input("Choose a username: ")
 # final_username = username.translate({ ord(c): None for c in "._!" })
@@ -161,7 +196,7 @@ def hide_country():
 
 #ez lefuttatja a main body-t
 main_game()
-hide_country()
+# hide_country()
 #print(pick_country())
 
 #Ez Gábor megoldása a random ország megnézésére,csak ki kell venni kommentből hogy teszteljünk
