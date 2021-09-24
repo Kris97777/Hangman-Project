@@ -14,6 +14,8 @@ def main_game():
 	display_hangman()
 	hide_country()
 	guess_letter()
+	# show_hangman_status := None
+	#TODO: remove show_hangman_status
 	show_hangman_status = display_hangman()
 	letter_is_guessed = guess_letter()
 	if letter_is_guessed is True:
@@ -166,6 +168,27 @@ def hide_country():
 	print(" __ " * len(country))
 
 
+word = 'United Sates of America'
+# _______
+
+def hide_word(word):
+	hiden_word = []
+	for letter in word:
+		if letter != ' ':
+			hiden_word.append('_')
+		else:
+			hiden_word.append(' ')
+	return hiden_word
+
+
+def print_hidden_word(hiden_word):
+	print(' '.join(hiden_word))
+
+
+hiden_word = hide_word(word)
+print_hidden_word(hiden_word)
+
+
 def guess_letter():
 	guess1 = input("Guess a letter! \n")
 	if validate_input(guess1) is True:
@@ -196,8 +219,8 @@ def incorrect_guess():
 def correct_guess():
 	pass
 
-
-main_game()
+# TODO uncomment main_game
+#main_game()
 #print(correct_letter)
 
 
